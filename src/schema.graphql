@@ -1,14 +1,44 @@
+scalar Date
+
 type Query {
-    info: String!
-    feed: [Link!]!
+    tasks: [Task!]!
+    hoursByEmployee(employee: ID!): Int!
+    hoursByEmployeeAndTaskType(employee: ID!, type: ID!): Int!
+    hoursByTaskType(type: ID!): Int!
 }
 
 type Mutation {
-    post(url: String!, description: String!): Link!
+    post(tasks: [TaskInput!], enterprise: String): [Task!]!
 }
 
-type Link {
+input TaskInput {
+    date: Date!
+    employee: String!
+    type: String!
+    hours: Float!
+    tractorHours: Float
+}
+
+type Task {
     id: ID!
-    description: String!
-    url: String!
+    employee: Employee!
+    type: TaskType!
+    enterprise: Enterprise!
+    hours: Float!
+    tractorHours: Float
+}
+
+type Employee {
+    id: ID!
+    name: String!
+}
+
+type TaskType {
+    id: ID!
+    name: String!
+}
+
+type Enterprise {
+    id: ID!
+    name: String!
 }

@@ -3,18 +3,17 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-    const newLink = await prisma.link.create({
-        data: {
-            url: "meow.com",
-            description: "where cats go"
-        }
-    });
-    const allLinks = await prisma.link.findMany();
-    console.log(allLinks);
+    const allTasks = await prisma.task.findMany();
+    console.log(allTasks);
 }
-
+main().then((val) => {
+    console.log(val);
+}).catch(e => {
+    console.log(e);
+});
+/*
 main().catch(e => {
     throw e;
 }).finally(async () => {
     await prisma.$disconnect();
-});
+});*/
