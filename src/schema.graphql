@@ -9,6 +9,7 @@ type Query {
 
 type Mutation {
     post(tasks: [TaskInput!], enterprise: String): [Task!]!
+    resetDatabase: Boolean
 }
 
 input TaskInput {

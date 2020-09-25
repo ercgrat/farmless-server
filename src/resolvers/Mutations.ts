@@ -61,5 +61,12 @@ module.exports = {
         
         return newTasks;
     },
-    
+
+    resetDatabase: async (parent, args, context) => {
+        await context.prisma.task.deleteMany();
+        await context.prisma.employee.deleteMany();
+        await context.prisma.enterprise.deleteMany();
+        await context.prisma.taskType.deleteMany();
+        return true;
+    }
 };
