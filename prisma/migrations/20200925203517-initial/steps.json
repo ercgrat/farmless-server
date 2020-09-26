@@ -438,10 +438,6 @@
       "field": "name",
       "type": "String",
       "arity": "Required"
-    },
-    {
-      "tag": "DeleteModel",
-      "model": "Link"
     }
   ]
 }

@@ -8,10 +8,10 @@ generator client {
 }
 
 model Task {
-    id              Int         @id @default(autoincrement())
+    id              Int             @id @default(autoincrement())
     date            DateTime
-    employee        Employee        @relation("Performed by", fields: [performedById], references: [id])
-    performedById   Int
+    employee        Employee        @relation("Performed by", fields: [employeeId], references: [id])
+    employeeId   Int
     type            TaskType        @relation("Is type of", fields: [typeId], references: [id])
     typeId          Int
     enterprise      Enterprise      @relation("Belongs to enterprise", fields: [enterpriseId], references: [id])

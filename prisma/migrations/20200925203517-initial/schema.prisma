@@ -1,6 +1,6 @@
 datasource db {
     provider = "sqlite"
-    url = "file:./dev.db"
+    url = "***"
 }
 
 generator client {
@@ -10,8 +10,8 @@ generator client {
 model Task {
     id              Int             @id @default(autoincrement())
     date            DateTime
-    employee        Employee        @relation("Performed by", fields: [employeeId], references: [id])
-    employeeId   Int
+    employee        Employee        @relation("Performed by", fields: [performedById], references: [id])
+    performedById   Int
     type            TaskType        @relation("Is type of", fields: [typeId], references: [id])
     typeId          Int
     enterprise      Enterprise      @relation("Belongs to enterprise", fields: [enterpriseId], references: [id])
@@ -22,18 +22,16 @@ model Task {
 
 model TaskType {
     id              Int         @id @default(autoincrement())
-    name            String      @unique
-    tasks           Task[]
+    name            String
 }
 
 model Employee {
     id              Int         @id @default(autoincrement())
-    name            String      @unique
+    name            String
     tasks           Task[]
 }
 
 model Enterprise {
     id              Int         @id @default(autoincrement())
-    name            String      @unique
-    tasks           Task[]
+    name            String
 }

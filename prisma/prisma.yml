@@ -1,0 +1,5 @@
+datamodel: datamodel.graphql
+
+generate:
+  - generator: typescript-client
+    output: ../src/generated/prisma-client/
