@@ -38,5 +38,16 @@ module.exports = {
         });
 
         return taskHoursSum(tasks);
+    },
+
+    hoursByTaskTypeAndEnterprise: async (parent, args, context) => {
+        let tasks = await context.prisma.task.findMany({
+            where: {
+                typeId: Number(args.type),
+                enterpriseId: Number(args.enterprise)
+            }
+        });
+
+        return taskHoursSum(tasks);
     }
 };

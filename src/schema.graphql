@@ -2,13 +2,14 @@ scalar Date
 
 type Query {
     tasks: [Task!]!
-    hoursByEmployee(employee: ID!): Int!
-    hoursByEmployeeAndTaskType(employee: ID!, type: ID!): Int!
-    hoursByTaskType(type: ID!): Int!
+    hoursByEmployee(employee: ID!): Float!
+    hoursByEmployeeAndTaskType(employee: ID!, type: ID!): Float!
+    hoursByTaskType(type: ID!): Float!
+    hoursByTaskTypeAndEnterprise(type: ID!, enterprise: ID!): Float!
 }
 
 type Mutation {
-    post(tasks: [TaskInput!], enterprise: String): [Task!]!
+    post(tasks: [TaskInput!]!, enterprise: String!): [Task!]!
     resetDatabase: Boolean
 }
 
